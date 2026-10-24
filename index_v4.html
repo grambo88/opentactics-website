@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTactics.ai | AI Strategy & Automation</title>
+    <meta name="description" content="Translating cutting-edge AI, workflow automation, and cloud infrastructure into measurable business execution without vendor lock-in.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            card: '#111827',
+                            border: '#1F293D',
+                            accent: '#06B6D4', // Vibrant Cyan
+                            accentHover: '#0891B2',
+                            green: '#10B981',  // Emerald Success
+                            text: '#F3F4F6',
+                            muted: '#9CA3AF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom subtle grid background */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(31, 41, 61, 0.4) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(31, 41, 61, 0.4) 1px, transparent 1px);
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.15);
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-black">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/80 border-b border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-accent to-emerald-500 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-brand-accent/20 group-hover:scale-105 transition-transform">
+                        OT
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold tracking-tight text-white flex items-center">
+                            OpenTactics<span class="text-brand-accent font-mono text-lg">.ai</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-brand-muted tracking-widest uppercase">Systems & Strategy</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+                    <a href="#services" class="hover:text-white transition-colors">Services</a>
+                    <a href="#why-us" class="hover:text-white transition-colors">Why OpenTactics</a>
+                    <a href="#process" class="hover:text-white transition-colors">Engagement Model</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#contact" class="bg-brand-accent hover:bg-brand-accentHover text-black font-semibold text-sm px-5 py-2.5 rounded-lg transition-all shadow-md shadow-brand-accent/20 flex items-center gap-2">
+                        <span>Book a free consult</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-brand-muted hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-4 pb-6 space-y-3">
+            <a href="#services" class="block text-brand-muted hover:text-white py-2">Services</a>
+            <a href="#why-us" class="block text-brand-muted hover:text-white py-2">Why OpenTactics</a>
+            <a href="#process" class="block text-brand-muted hover:text-white py-2">Engagement Model</a>
+            <a href="#contact" class="block text-brand-muted hover:text-white py-2">Contact</a>
+            <a href="#contact" class="inline-block w-full text-center bg-brand-accent text-black font-semibold py-3 rounded-lg mt-2">
+                Schedule Tactical Audit
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-16 pb-24 lg:pt-28 lg:pb-32 overflow-hidden bg-grid-pattern">
+        <!-- Radial Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/80 to-brand-dark pointer-events-none"></div>
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-border/60 border border-brand-border text-xs font-mono text-brand-accent mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                <span>Tailored AI Solutions for Everyday Business</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15]">
+                AI Strategy & <span class="bg-gradient-to-r from-brand-accent via-cyan-200 to-emerald-400 bg-clip-text text-transparent">Business Automation</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="mt-6 text-lg sm:text-xl text-brand-muted max-w-3xl mx-auto font-normal leading-relaxed">
+                Translating cutting-edge AI, automation pipelines, and robust IT infrastructure into measurable business execution—built with zero platform lock-in.
+            </p>
+
+            <!-- CTA Group -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto bg-brand-accent hover:bg-brand-accentHover text-black font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-accent/25 transition-all text-base flex items-center justify-center gap-2">
+                    <span>Request Strategy Session</span>
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#services" class="w-full sm:w-auto bg-brand-card hover:bg-brand-border text-white border border-brand-border font-semibold px-8 py-4 rounded-xl transition-all text-base flex items-center justify-center gap-2">
+                    <span>Explore Solutions</span>
+                    <i data-lucide="layers" class="w-5 h-5 text-brand-muted"></i>
+                </a>
+            </div>
+
+            <!-- Feature Highlights Bar -->
+            <div class="mt-16 pt-10 border-t border-brand-border/50 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-accent"></i>
+                    <span class="text-xs sm:text-sm font-medium text-brand-text">Zero Vendor Lock-In</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="zap" class="w-5 h-5 text-emerald-400"></i>
+                    <span class="text-xs sm:text-sm font-medium text-brand-text">Rapid Deployment</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="cpu" class="w-5 h-5 text-brand-accent"></i>
+                    <span class="text-xs sm:text-sm font-medium text-brand-text">Local & Cloud LLMs</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
+                    <span class="text-xs sm:text-sm font-medium text-brand-text">Resilient Systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Value Pillars / Services -->
+    <section id="services" class="py-20 bg-brand-dark relative border-t border-brand-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-brand-accent uppercase tracking-widest font-semibold">Core Capabilities</h2>
+                <p class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white">Engineering-Led Consulting Services</p>
+                <p class="mt-4 text-brand-muted">From strategic roadmap advisory to hands-on custom pipeline deployments, we build solutions engineered to solve real operational bottlenecks.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-8 transition-all duration-300 glow-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/30 text-brand-accent flex items-center justify-center mb-6">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Strategic AI Implementation</h3>
+                        <p class="text-brand-muted text-sm leading-relaxed mb-6">
+                            Evaluate, select, and safely integrate artificial intelligence into core operations. We help teams move past generative AI hype into secure, high-ROI execution.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-brand-text font-mono">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> Custom LLM & Model Benchmarking
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> Enterprise RAG & Knowledge Bases
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> Agentic Workflow Engineering
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> Governance & Data Security
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-8 transition-all duration-300 glow-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-6">
+                            <i data-lucide="workflow" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Workflow & Process Automation</h3>
+                        <p class="text-brand-muted text-sm leading-relaxed mb-6">
+                            Eliminate manual overhead, redundant data entry, and fragmented tools by constructing custom automated pipelines between your legacy and modern apps.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-brand-text font-mono">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> n8n & Custom API Integrations
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Automated Document Processing
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Custom Python / Node Microservices
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Real-time Operational Dashboards
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-8 transition-all duration-300 glow-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center mb-6">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Modern Cloud Infrastructure</h3>
+                        <p class="text-brand-muted text-sm leading-relaxed mb-6">
+                            Grounded in reliable IT engineering principles. We modernize legacy tech stacks, optimize cloud hosting budgets, and implement zero-trust security architecture.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-brand-text font-mono">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Cloud Migrations & AWS/Azure Setup
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Zero-Trust & Network Architecture
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Infrastructure-as-Code (Terraform)
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Systems Health & Monitoring
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why OpenTactics Section -->
+    <section id="why-us" class="py-20 bg-brand-dark/50 border-t border-brand-border/40 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-xs font-mono text-brand-accent uppercase tracking-widest font-semibold">The Tactical Advantage</h2>
+                    <p class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+                        Built for Pragmatic Execution, Not Theoretical Consulting.
+                    </p>
+                    <p class="mt-4 text-brand-muted leading-relaxed">
+                        Traditional consulting agencies leave you with long PDF decks and zero code. We bridge high-level strategy with hands-on systems deployment to make sure your technology works under real operational stress.
+                    </p>
+
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 rounded-lg bg-brand-border/50 text-brand-accent mt-1">
+                                <i data-lucide="code" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Vendor-Agnostic Architecture</h4>
+                                <p class="text-sm text-brand-muted mt-1">We recommend the best models, open-source software, and cloud providers for your specific operational requirements—never locked into single-vendor commission models.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 rounded-lg bg-brand-border/50 text-emerald-400 mt-1">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Security & Privacy First</h4>
+                                <p class="text-sm text-brand-muted mt-1">Ensure your proprietary business data remains yours. We configure local LLM runtimes or private cloud endpoints that safeguard intellectual property.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 rounded-lg bg-brand-border/50 text-brand-accent mt-1">
+                                <i data-lucide="wrench" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Practical On-Island & Enterprise Heritage</h4>
+                                <p class="text-sm text-brand-muted mt-1">Rooted in real-world IT infrastructure engineering where uptime, reliability, and simple, maintainable software are critical.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Terminal Visual -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-6 font-mono text-xs shadow-2xl relative overflow-hidden">
+                    <div class="flex items-center justify-between pb-4 border-b border-brand-border mb-4 text-brand-muted">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            <span class="ml-2 text-brand-muted text-[11px]">opentactics-runner.sh</span>
+                        </div>
+                        <span class="text-[10px] text-brand-muted">bash - 80x24</span>
+                    </div>
+
+                    <div class="space-y-3 text-brand-muted">
+                        <p class="text-emerald-400"><span class="text-brand-accent">$</span> opentactics audit --domain target-system.local</p>
+                        <p>[+] Scanning existing workflows and IT infrastructure...</p>
+                        <p>[+] Identifying manual bottleneck: Sales data sync (4.2 hrs/day wasted)</p>
+                        <p>[+] Evaluating LLM deployment: Local vLLM on private endpoint</p>
+                        <p class="text-brand-accent"><span class="text-white">$</span> opentactics deploy --pipeline automated-crm-sync</p>
+                        <p class="text-white">[✔] Pipeline deployed in isolated Docker container.</p>
+                        <p class="text-white">[✔] Encryption key stored in Zero-Trust vault.</p>
+                        <p class="text-emerald-400 font-bold">[SUCCESS] Efficiency gain: 94%. Zero vendor lock-in active.</p>
+                        <div class="pt-2 flex items-center gap-2 text-brand-accent">
+                            <span class="animate-pulse">❯</span>
+                            <span class="text-brand-muted">Waiting for next tactical directive...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Model / Process Section -->
+    <section id="process" class="py-20 bg-brand-dark border-t border-brand-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-brand-accent uppercase tracking-widest font-semibold">How We Work</h2>
+                <p class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white">Three-Step Engagement Model</p>
+                <p class="mt-4 text-brand-muted">Clear milestones, predictable outcomes, and fast time-to-value.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="bg-brand-card border border-brand-border/80 rounded-2xl p-8 relative">
+                    <div class="text-4xl font-extrabold text-brand-border font-mono mb-4">01</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Tactical Audit & Discovery</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        We analyze your current software stack, operational bottlenecks, data security needs, and manual workflows to identify high-ROI AI & automation opportunities.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-brand-card border border-brand-border/80 rounded-2xl p-8 relative">
+                    <div class="text-4xl font-extrabold text-brand-accent/40 font-mono mb-4">02</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Systems Design & Deployment</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        We build custom automation pipelines, integrate AI models into your workflows, and optimize cloud or local infrastructure with zero downtime.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-brand-card border border-brand-border/80 rounded-2xl p-8 relative">
+                    <div class="text-4xl font-extrabold text-emerald-500/40 font-mono mb-4">03</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Continuous Optimization</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        We train your team, monitor system health, and refine model performance as new AI benchmarks and tools emerge.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Lead Form -->
+    <section id="contact" class="py-20 bg-brand-dark/80 relative border-t border-brand-border/40 bg-grid-pattern">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card border border-brand-border rounded-3xl p-8 sm:p-12 glow-effect">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="text-xs font-mono text-brand-accent uppercase tracking-widest font-semibold">Start The Conversation</h2>
+                    <p class="mt-3 text-3xl font-bold tracking-tight text-white">Schedule a Tactical Audit</p>
+                    <p class="mt-3 text-brand-muted text-sm">
+                        Tell us about your business goals or technological bottlenecks, and we'll construct a targeted execution plan.
+                    </p>
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-brand-muted mb-2">Full Name *</label>
+                            <input type="text" required placeholder="John Smith" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-brand-muted mb-2">Business Email *</label>
+                            <input type="email" required placeholder="you@company.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-brand-muted mb-2">Company / Organization</label>
+                            <input type="text" placeholder="Company" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-brand-muted mb-2">Primary Need</label>
+                            <select class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                                <option value="ai">AI Implementation & LLMs</option>
+                                <option value="automation">Workflow & Process Automation</option>
+                                <option value="infrastructure">Cloud / IT Infrastructure Modernization</option>
+                                <option value="advisory">General Tech & Strategy Advisory</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-brand-muted mb-2">Project Goals or Current Bottlenecks</label>
+                        <textarea rows="4" placeholder="Briefly describe what systems you want to automate, build, or optimize..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-black font-bold py-4 rounded-xl shadow-lg shadow-brand-accent/20 transition-all text-base flex items-center justify-center gap-2">
+                        <span>Send Consultation Request</span>
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                    
+                    <div id="form-success" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm text-center">
+                        Request received! We'll reach out within 24 hours to schedule your session.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-brand-border/60 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Footer Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-brand-accent text-black font-bold flex items-center justify-center text-sm">
+                        OT
+                    </div>
+                    <span class="text-white font-bold tracking-tight">OpenTactics<span class="text-brand-accent font-mono text-sm">.ai</span></span>
+                </div>
+
+                <!-- Contact & Links -->
+                <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-brand-muted font-mono">
+                    <a href="mailto:info@opentactics.ai" class="hover:text-brand-accent transition-colors flex items-center gap-1.5">
+                        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                        <span>info@opentactics.ai</span>
+                    </a>
+                    <span>•</span>
+                    <span>AI Strategy & Business Automation</span>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-xs text-brand-muted font-mono">
+                    © 2026 OpenTactics.ai. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Simple Form Submission Feedback
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            contactForm.reset();
+            formSuccess.classList.remove('hidden');
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 6000);
+        });
+    </script>
+</body>
+</html>
